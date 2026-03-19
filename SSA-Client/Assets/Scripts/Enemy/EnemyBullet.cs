@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -21,9 +22,12 @@ public class EnemyBullet : MonoBehaviour
 
     #region Unity Lifecycle
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+    private void OnEnable()
+    {
         rb.linearVelocity = Vector2.down * speed;
     }
 
@@ -36,14 +40,26 @@ public class EnemyBullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerStats>().PlayerTakeDamage(damage);
-            Destroy(gameObject);
+            ReleaseToPool();
         }
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        ReleaseToPool();
     }
 
+    #endregion
+    
+    #region Private Methods
+    
+    private void ReleaseToPool()
+    {
+        if (BulletPoolManager.Instance != null)
+            BulletPoolManager.Instance.EnemyBulletPool.Release(this);
+        else
+            Destroy(gameObject);
+    }
+    
     #endregion
 }

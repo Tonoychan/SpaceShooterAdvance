@@ -16,7 +16,7 @@ public class BossMiniBullet : MonoBehaviour
 
     #region Unity Lifecycle
 
-    private void Start()
+    private void OnEnable()
     {
         rb.linearVelocity = transform.up * speed;
     }
@@ -30,14 +30,26 @@ public class BossMiniBullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerStats>().PlayerTakeDamage(damage);
-            Destroy(gameObject);
+            ReleaseToPool();
         }
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        ReleaseToPool();
     }
 
+    #endregion
+    
+    #region Private Methods
+    
+    private void ReleaseToPool()
+    {
+        if (BulletPoolManager.Instance != null)
+            BulletPoolManager.Instance.BossMiniBulletPool.Release(this);
+        else
+            Destroy(gameObject);
+    }
+    
     #endregion
 }

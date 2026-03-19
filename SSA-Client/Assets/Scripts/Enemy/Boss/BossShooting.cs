@@ -60,7 +60,7 @@ public class BossShooting : BossBaseState
             {
                 for (int i = 0; i < boosShootingPoints.Length; i++)
                 {
-                    Instantiate(bossBulletPrefab, boosShootingPoints[i].position,
+                    BulletPoolManager.Instance.EnemyBulletPool.Get(boosShootingPoints[i].position,
                         Quaternion.identity);
                 }
                 shootTimer = 0;

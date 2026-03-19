@@ -56,7 +56,8 @@ public class BossSpecialAttack : BossBaseState
             yield return new WaitForEndOfFrame();
         }
 
-        Instantiate(bossSpecialBulletPrefab, bossSpecialShootingPoint.position, Quaternion.identity);
+        if (BulletPoolManager.Instance != null)
+            BulletPoolManager.Instance.BossSpecialBulletPool.Get(bossSpecialShootingPoint.position, Quaternion.identity);
         yield return new WaitForSeconds(waitTime);
         bossController.ChangeState(BossState.Attack);
     }
