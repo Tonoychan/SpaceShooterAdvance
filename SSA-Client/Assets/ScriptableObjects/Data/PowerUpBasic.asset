@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b70fc1e2dc8a22448a6d64e00f0a131, type: 3}
+  m_Name: PowerUpBasic
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUps
+  powerups:
+  - {fileID: 5833594030032406595, guid: 99a4a110ba6f67f4da7d73c1d4c944db, type: 3}
+  - {fileID: 4478084428780254733, guid: 346f9d77006fcdd47a409fb70fc934a0, type: 3}
+  - {fileID: 7942595484773739628, guid: 241bfb58b1a0cb6408a926316d80d227, type: 3}
+  spawnThreshold: 80

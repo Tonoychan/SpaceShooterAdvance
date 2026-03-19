@@ -97,3 +97,15 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+SSS-Client/Library/
+
+SSS-Client/Temp/
+
+SSS-Client/ProjectSettings/SceneTemplateSettings.json
+
+SSS-Client/obj/
+
+SSS-Client/.ai/
+/SSA-Client/Library
+*.cache
