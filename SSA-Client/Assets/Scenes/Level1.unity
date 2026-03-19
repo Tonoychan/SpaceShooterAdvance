@@ -2169,30 +2169,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4363100540305044007, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
-      propertyPath: gameSessionService
-      value: 
-      objectReference: {fileID: 4807111128534409246}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1556710234311450474, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4807111128534409246}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
---- !u!1 &4807111128534409245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1556710234311450474, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
+--- !u!114 &4807111128534409246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 974568906719046428, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
   m_PrefabInstance: {fileID: 4807111128534409244}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4807111128534409246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4807111128534409245}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d8eee6e8f004c548a3451490a7a1d3a, type: 3}
@@ -2401,6 +2388,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1968639189}
+    - target: {fileID: 1616376786243509128, guid: 3c66f25777cd5464a94a2444a4a304aa, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 9217673482095220924}
     - target: {fileID: 1950511797937342716, guid: 3c66f25777cd5464a94a2444a4a304aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2458,6 +2449,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c66f25777cd5464a94a2444a4a304aa, type: 3}
+--- !u!114 &9217673482095220924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5815241789699554907, guid: 3c66f25777cd5464a94a2444a4a304aa, type: 3}
+  m_PrefabInstance: {fileID: 9217673482095220923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507550920d349af45aa6003001467a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sheild
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

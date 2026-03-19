@@ -1,72 +1,100 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles player weapon firing. Supports 5 upgrade levels (0-4) with different shot patterns.
+/// Uses interval-based shooting with configurable fire rate.
+/// </summary>
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject laserPrefab;
-    [SerializeField]
-    private Transform shootingPoint;
-    
-    [SerializeField]
-    private Transform leftShootingPoint1;
-    [SerializeField]
-    private Transform rightShootingPoint1;
-    [SerializeField]
-    private Transform leftShootingPoint2;
-    [SerializeField]
-    private Transform rightShootingPoint2;
-    [SerializeField]
-    private Transform leftShootingPoint3;
-    [SerializeField]
-    private Transform rightShootingPoint3;
+    #region Serialized Fields
 
-    private int shootUpgradelevel;
-    
-    [SerializeField]
-    private float shootInterval;
+    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private Transform shootingPoint;
 
-    private float resetInterval;
-    
+    /*
+     * Shooting points for upgrade levels 1-4:
+     * Level 1: left/right pair 1
+     * Level 2: center + pair 1
+     * Level 3: center + pair 1 + angled pair 2
+     * Level 4: center + pairs 1, 2, and 3
+     */
+    [SerializeField] private Transform leftShootingPoint1;
+    [SerializeField] private Transform rightShootingPoint1;
+    [SerializeField] private Transform leftShootingPoint2;
+    [SerializeField] private Transform rightShootingPoint2;
+    [SerializeField] private Transform leftShootingPoint3;
+    [SerializeField] private Transform rightShootingPoint3;
+
+    [SerializeField] private float shootInterval;
     [SerializeField] private AudioSource audioSource;
-    
-    void Start()
+
+    #endregion
+
+    #region Private Fields
+
+    private int shootUpgradeLevel;
+    private float resetInterval;
+
+    #endregion
+
+    #region Unity Lifecycle
+
+    private void Start()
     {
         resetInterval = shootInterval;
     }
 
-    
-    void Update()
+    private void Update()
     {
-        shootInterval-= Time.deltaTime;
-        if (shootInterval <=0)
+        shootInterval -= Time.deltaTime;
+        if (shootInterval <= 0)
         {
             Shoot();
             shootInterval = resetInterval;
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Increases the shoot upgrade level. Max level is 4.
+    /// </summary>
+    /// <param name="value">Amount to add to upgrade level.</param>
     public void IncreaseUpgradelevel(int value)
     {
-        shootUpgradelevel += value;
-        if (shootUpgradelevel > 4)
+        shootUpgradeLevel += value;
+        if (shootUpgradeLevel > 4)
         {
-            shootUpgradelevel = 4;
+            shootUpgradeLevel = 4;
         }
     }
 
+    /// <summary>
+    /// Decreases the shoot upgrade level by 1. Min level is 0.
+    /// Called when player takes damage.
+    /// </summary>
     public void DecreaseUpgradelevel()
     {
-        shootUpgradelevel -= 1;
-        if (shootUpgradelevel < 0)
+        shootUpgradeLevel -= 1;
+        if (shootUpgradeLevel < 0)
         {
-            shootUpgradelevel = 0;
+            shootUpgradeLevel = 0;
         }
     }
 
-    void Shoot()
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Spawns laser(s) based on current upgrade level. Plays shoot sound.
+    /// </summary>
+    private void Shoot()
     {
         audioSource.Play();
-        switch (shootUpgradelevel)
+        switch (shootUpgradeLevel)
         {
             case 0:
                 Instantiate(laserPrefab, shootingPoint.position, Quaternion.identity);
@@ -98,4 +126,6 @@ public class PlayerShooting : MonoBehaviour
                 break;
         }
     }
+
+    #endregion
 }

@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Boss state machine. Manages transitions between Enter, Attack, SpecialAttack, and Death states.
+/// Each state is handled by a separate BossBaseState component.
+/// </summary>
 public enum BossState
 {
     Enter,
@@ -11,25 +15,38 @@ public enum BossState
 
 public class BossController : MonoBehaviour
 {
+    #region Serialized Fields
+
     [SerializeField] private BossEnter bossEnter;
     [SerializeField] private BossShooting bossShooting;
     [SerializeField] private BossSpecialAttack bossSpecialAttack;
     [SerializeField] private BossDeath bossDeath;
-    
-    [SerializeField] private bool test;
+
+    [SerializeField] private bool debugSkipToState;
     [SerializeField] private BossState state;
+
+    #endregion
+
+    #region Unity Lifecycle
 
     private void Start()
     {
         ChangeState(BossState.Enter);
-        
-        if (test)
+
+        if (debugSkipToState)
         {
             ChangeState(state);
         }
     }
 
+    #endregion
 
+    #region Public Methods
+
+    /// <summary>
+    /// Transitions to the specified boss state. Stops all active states before Death.
+    /// </summary>
+    /// <param name="state">Target state to transition to.</param>
     public void ChangeState(BossState state)
     {
         switch (state)
@@ -54,4 +71,5 @@ public class BossController : MonoBehaviour
         }
     }
 
+    #endregion
 }
