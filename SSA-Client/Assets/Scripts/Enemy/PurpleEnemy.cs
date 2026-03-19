@@ -1,28 +1,37 @@
-using System;
 using UnityEngine;
 
+/// <summary>
+/// Enemy variant that moves downward and shoots from two fire points.
+/// Damages player on contact and plays hurt/death animations.
+/// </summary>
 public class PurpleEnemy : Enemy
 {
-    [SerializeField]
-    protected float moveSpeed;
+    #region Serialized Fields
 
-    private float shootTimer=0f;
-    [SerializeField]
-    private float shootInterval;
-    
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] private float shootInterval;
     [SerializeField] private Transform LeftFirePoint;
     [SerializeField] private Transform RightFirePoint;
-    
     [SerializeField] private GameObject bulletPrefab;
+
+    #endregion
+
+    #region Private Fields
+
+    private float shootTimer = 0f;
+
+    #endregion
+
+    #region Unity Lifecycle
 
     private void Start()
     {
         rigidbody2D.linearVelocity = Vector2.down * moveSpeed;
     }
 
-    void Update()
+    private void Update()
     {
-        shootTimer+= Time.deltaTime;
+        shootTimer += Time.deltaTime;
         if (shootTimer >= shootInterval)
         {
             Instantiate(bulletPrefab, LeftFirePoint.position, Quaternion.identity);
@@ -30,6 +39,10 @@ public class PurpleEnemy : Enemy
             shootTimer = 0f;
         }
     }
+
+    #endregion
+
+    #region Unity Messages
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -41,13 +54,28 @@ public class PurpleEnemy : Enemy
         }
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    #endregion
+
+    #region Overrides
+
+    /// <summary>
+    /// Plays damage animation. Prevents spam if already in damage state.
+    /// </summary>
     public override void HurtSequence()
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Dmg"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Dmg"))
             return;
         animator.SetTrigger("IsDamage");
     }
 
+    /// <summary>
+    /// Adds score, spawns explosion VFX, and destroys the enemy.
+    /// </summary>
     public override void DeathSequence()
     {
         base.DeathSequence();
@@ -55,8 +83,5 @@ public class PurpleEnemy : Enemy
         Destroy(gameObject);
     }
 
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+    #endregion
 }

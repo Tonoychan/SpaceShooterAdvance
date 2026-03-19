@@ -3,30 +3,43 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameSessionService : MonoBehaviour,IGameStatusReader,IGameResolver,IScoreWriter
+/// <summary>
+/// Central game session service. Implements IGameStatusReader, IGameResolver, and IScoreWriter.
+/// Manages score, win/lose resolution, level unlock, and panel transitions.
+/// </summary>
+public class GameSessionService : MonoBehaviour, IGameStatusReader, IGameResolver, IScoreWriter
 {
+    #region Constants
+
     private const string LevelUnlockKey = "LevelUnlock";
-    
+
+    #endregion
+
+    #region Public Properties & Events
+
     public bool IsGameOver { get; private set; }
     public int CurrentScore { get; private set; }
-    
+
     public event Action<int> ScoreChanged;
     public event Action GameWon;
     public event Action GameLost;
-    
+
+    #endregion
+
+    #region Serialized Fields
+
     [SerializeField] private IScorePersistence scorePersistence;
+
+    #endregion
+
+    #region Private Fields
+
     private PanelController panelController;
-    
-    public void SetPanelController(PanelController controller)
-    {
-        panelController = controller;
-    }
-    
-    public void SetScorePersistence(IScorePersistence persistence)
-    {
-        scorePersistence = persistence;
-    }
-    
+
+    #endregion
+
+    #region Unity Lifecycle
+
     private void Awake()
     {
         if (scorePersistence == null)
@@ -34,14 +47,46 @@ public class GameSessionService : MonoBehaviour,IGameStatusReader,IGameResolver,
             scorePersistence = new PlayerPrefsScorePersistence();
         }
     }
-    
+
+    #endregion
+
+    #region Public Methods - Setup
+
+    /// <summary>
+    /// Registers the panel controller for win/lose screen activation.
+    /// </summary>
+    public void SetPanelController(PanelController controller)
+    {
+        panelController = controller;
+    }
+
+    /// <summary>
+    /// Sets the score persistence implementation. Defaults to PlayerPrefs if null.
+    /// </summary>
+    public void SetScorePersistence(IScorePersistence persistence)
+    {
+        scorePersistence = persistence;
+    }
+
+    #endregion
+
+    #region Public Methods - IGameStatusReader / Game State
+
+    /// <summary>
+    /// Resets game state for a new run. Clears game over flag and score.
+    /// </summary>
     public void ResetGameState()
     {
         IsGameOver = false;
         CurrentScore = 0;
         ScoreChanged?.Invoke(CurrentScore);
     }
-    
+
+    #endregion
+
+    #region Public Methods - IGameResolver
+
+    /// <inheritdoc />
     public void ResolveWin()
     {
         if (IsGameOver) return;
@@ -55,6 +100,7 @@ public class GameSessionService : MonoBehaviour,IGameStatusReader,IGameResolver,
         }
     }
 
+    /// <inheritdoc />
     public void ResolveLose()
     {
         IsGameOver = true;
@@ -62,28 +108,13 @@ public class GameSessionService : MonoBehaviour,IGameStatusReader,IGameResolver,
         panelController?.ActivateLoseScreen();
     }
 
+    /// <inheritdoc />
     public void StartResolveSequence(float delayInSeconds = 2)
     {
         StartCoroutine(ResolveSequenceCoroutine(delayInSeconds));
     }
-    
-    public void AddScore(int value)
-    {
-        CurrentScore += value;
-        ScoreChanged?.Invoke(CurrentScore);
-    }
 
-    public void ResetScore()
-    {
-        CurrentScore = 0;
-        ScoreChanged?.Invoke(CurrentScore);
-    }
-    
-    private IEnumerator ResolveSequenceCoroutine(float delaySeconds)
-    {
-        yield return new WaitForSeconds(delaySeconds);
-        ResolveGame();
-    }
+    /// <inheritdoc />
     public void ResolveGame()
     {
         if (IsGameOver)
@@ -95,13 +126,50 @@ public class GameSessionService : MonoBehaviour,IGameStatusReader,IGameResolver,
             ResolveWin();
         }
     }
-    
+
+    /// <summary>
+    /// Forces lose state and starts resolve sequence. Used when player dies.
+    /// </summary>
     public void TriggerLose()
     {
         IsGameOver = true;
         StartResolveSequence(2f);
     }
-    
+
+    #endregion
+
+    #region Public Methods - IScoreWriter
+
+    /// <inheritdoc />
+    public void AddScore(int value)
+    {
+        CurrentScore += value;
+        ScoreChanged?.Invoke(CurrentScore);
+    }
+
+    /// <inheritdoc />
+    public void ResetScore()
+    {
+        CurrentScore = 0;
+        ScoreChanged?.Invoke(CurrentScore);
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Waits for delay, then resolves game (win or lose based on IsGameOver).
+    /// </summary>
+    private IEnumerator ResolveSequenceCoroutine(float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        ResolveGame();
+    }
+
+    /// <summary>
+    /// Saves current score to PlayerPrefs, updates high score if applicable, then resets.
+    /// </summary>
     private void SaveAndResetScore()
     {
         string sceneName = SceneManager.GetActiveScene().name;
@@ -114,4 +182,6 @@ public class GameSessionService : MonoBehaviour,IGameStatusReader,IGameResolver,
         CurrentScore = 0;
         ScoreChanged?.Invoke(0);
     }
+
+    #endregion
 }
