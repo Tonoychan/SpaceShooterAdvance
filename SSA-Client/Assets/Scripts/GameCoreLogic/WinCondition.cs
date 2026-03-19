@@ -8,16 +8,24 @@ using UnityEngine;
 public class WinCondition : MonoBehaviour
 {
     #region Serialized Fields
-
-    [SerializeField] private float possibleWinTime;
+    
+    [SerializeField] private LevelData levelData;
     [SerializeField] private GameObject[] spawners;
-    [SerializeField] private bool hasBoss = false;
 
     #endregion
 
     #region Public Fields
 
     public bool canSpawnBoss = false;
+
+    #endregion
+
+    #region Public Methods
+
+    public void SetLevelData(LevelData data)
+    {
+        levelData = data;
+    }
 
     #endregion
 
@@ -46,13 +54,16 @@ public class WinCondition : MonoBehaviour
 
     private void Update()
     {
+        if (levelData == null)
+            return;
+
         if (gameStatus != null && gameStatus.IsGameOver)
             return;
 
         timer += Time.deltaTime;
-        if (timer >= possibleWinTime)
+        if (timer >= levelData.possibleWinTime)
         {
-            if (hasBoss == false)
+            if (levelData?.hasBoss == false)
             {
                 gameResolver?.ResolveGame();
             }
