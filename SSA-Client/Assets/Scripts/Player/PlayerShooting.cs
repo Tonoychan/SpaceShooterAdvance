@@ -93,36 +93,38 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
+        if (BulletPoolManager.Instance == null) return;
         audioSource.Play();
+        var pool = BulletPoolManager.Instance.LaserPool;
         switch (shootUpgradeLevel)
         {
             case 0:
-                Instantiate(laserPrefab, shootingPoint.position, Quaternion.identity);
+                pool.Get(shootingPoint.position, Quaternion.identity);
                 break;
             case 1:
-                Instantiate(laserPrefab, leftShootingPoint1.position, Quaternion.identity);
-                Instantiate(laserPrefab, rightShootingPoint1.position, Quaternion.identity);
+                pool.Get(leftShootingPoint1.position, Quaternion.identity);
+                pool.Get(rightShootingPoint1.position, Quaternion.identity);
                 break;
             case 2:
-                Instantiate(laserPrefab, shootingPoint.position, Quaternion.identity);
-                Instantiate(laserPrefab, leftShootingPoint1.position, Quaternion.identity);
-                Instantiate(laserPrefab, rightShootingPoint1.position, Quaternion.identity);
+                pool.Get(shootingPoint.position, Quaternion.identity);
+                pool.Get(leftShootingPoint1.position, Quaternion.identity);
+                pool.Get(rightShootingPoint1.position, Quaternion.identity);
                 break;
             case 3:
-                Instantiate(laserPrefab, shootingPoint.position, Quaternion.identity);
-                Instantiate(laserPrefab, leftShootingPoint1.position, Quaternion.identity);
-                Instantiate(laserPrefab, rightShootingPoint1.position, Quaternion.identity);
-                Instantiate(laserPrefab, leftShootingPoint2.position, leftShootingPoint2.rotation);
-                Instantiate(laserPrefab, rightShootingPoint2.position, rightShootingPoint2.rotation);
+                pool.Get(shootingPoint.position, Quaternion.identity);
+                pool.Get(leftShootingPoint1.position, Quaternion.identity);
+                pool.Get(rightShootingPoint1.position, Quaternion.identity);
+                pool.Get(leftShootingPoint2.position, leftShootingPoint2.rotation);
+                pool.Get(rightShootingPoint2.position, rightShootingPoint2.rotation);
                 break;
             case 4:
-                Instantiate(laserPrefab, shootingPoint.position, Quaternion.identity);
-                Instantiate(laserPrefab, leftShootingPoint1.position, Quaternion.identity);
-                Instantiate(laserPrefab, rightShootingPoint1.position, Quaternion.identity);
-                Instantiate(laserPrefab, leftShootingPoint2.position, leftShootingPoint2.rotation);
-                Instantiate(laserPrefab, rightShootingPoint2.position, rightShootingPoint2.rotation);
-                Instantiate(laserPrefab, leftShootingPoint3.position, leftShootingPoint3.rotation);
-                Instantiate(laserPrefab, rightShootingPoint3.position, rightShootingPoint3.rotation);
+                pool.Get(shootingPoint.position, Quaternion.identity);
+                pool.Get(leftShootingPoint1.position, Quaternion.identity);
+                pool.Get(rightShootingPoint1.position, Quaternion.identity);
+                pool.Get(leftShootingPoint2.position, leftShootingPoint2.rotation);
+                pool.Get(rightShootingPoint2.position, rightShootingPoint2.rotation);
+                pool.Get(leftShootingPoint3.position, leftShootingPoint3.rotation);
+                pool.Get(rightShootingPoint3.position, rightShootingPoint3.rotation);
                 break;
         }
     }

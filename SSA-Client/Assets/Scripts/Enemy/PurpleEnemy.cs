@@ -34,8 +34,11 @@ public class PurpleEnemy : Enemy
         shootTimer += Time.deltaTime;
         if (shootTimer >= shootInterval)
         {
-            Instantiate(bulletPrefab, LeftFirePoint.position, Quaternion.identity);
-            Instantiate(bulletPrefab, RightFirePoint.position, Quaternion.identity);
+            if (BulletPoolManager.Instance != null)
+            {
+                BulletPoolManager.Instance.EnemyBulletPool.Get(LeftFirePoint.position, Quaternion.identity);
+                BulletPoolManager.Instance.EnemyBulletPool.Get(RightFirePoint.position, Quaternion.identity);
+            }
             shootTimer = 0f;
         }
     }

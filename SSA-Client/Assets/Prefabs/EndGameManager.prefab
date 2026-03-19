@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2760487914751796212}
   - component: {fileID: 4363100540305044007}
   - component: {fileID: 974568906719046428}
+  - component: {fileID: 4193103460249018569}
   m_Layer: 0
   m_Name: EndGameManager
   m_TagString: Untagged
@@ -58,3 +59,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8eee6e8f004c548a3451490a7a1d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSessionService
+--- !u!114 &4193103460249018569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556710234311450474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a954e5f3d973e4a49b02ac8ff18c14a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletPoolManager
+  laserBulletPrefab: {fileID: 5638815618154560544, guid: 8bc789028545d0842a54e36468ae6a03, type: 3}
+  enemyBulletPrefab: {fileID: 7471007215368270691, guid: b0ab6f2f091321f42853d72875af90e9, type: 3}
+  bossSpecialBulletPrefab: {fileID: 8434010076929137281, guid: 9023776a612fc83479fb1ebdeb2e22f1, type: 3}
+  bossMiniBulletPrefab: {fileID: 8466151450278693223, guid: 08a0ffbec07aba141a8d24edc5cfdcdf, type: 3}
+  laserPoolSize: 50
+  enemyBulletPoolSize: 30
+  bossSpecialBulletPoolSize: 5
+  bossMiniBulletPoolSize: 20

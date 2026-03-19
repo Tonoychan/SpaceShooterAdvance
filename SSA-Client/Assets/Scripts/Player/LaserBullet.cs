@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -16,7 +17,7 @@ public class LaserBullet : MonoBehaviour
 
     #region Unity Lifecycle
 
-    private void Start()
+    private void OnEnable()
     {
         rigidBody.linearVelocity = transform.up * speed;
     }
@@ -30,13 +31,24 @@ public class LaserBullet : MonoBehaviour
         Enemy enemy = collider.GetComponent<Enemy>();
         if (enemy != null)
             enemy.TakeDamage(damage);
-        Destroy(gameObject);
+        ReleaseToPool();
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        ReleaseToPool();
     }
 
+    #endregion
+    
+    #region Private Methods
+    
+    private void ReleaseToPool()
+    {
+        if (BulletPoolManager.Instance != null)
+            BulletPoolManager.Instance.LaserPool.Release(this);
+        else
+            Destroy(gameObject);
+    }
     #endregion
 }

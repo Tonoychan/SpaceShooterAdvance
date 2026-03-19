@@ -21,10 +21,14 @@ public class BossSpecialBullet : MonoBehaviour
 
     #region Unity Lifecycle
 
-    private void Start()
+    private void OnEnable()
     {
         rb.linearVelocity = Vector2.down * speed;
         StartCoroutine(ExplodeBullet());
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private void Update()
@@ -41,13 +45,13 @@ public class BossSpecialBullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerStats>().PlayerTakeDamage(damage);
-            Destroy(gameObject);
+            ReleaseToPool();
         }
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        ReleaseToPool();
     }
 
     #endregion
@@ -63,9 +67,18 @@ public class BossSpecialBullet : MonoBehaviour
         yield return new WaitForSeconds(randomExplodeTime);
         for (var i = 0; i < spawnPoints.Length; i++)
         {
-            Instantiate(miniBulletRef, spawnPoints[i].position, spawnPoints[i].rotation);
+            BulletPoolManager.Instance.BossMiniBulletPool.Get(spawnPoints[i].position,
+                spawnPoints[i].rotation);
         }
         Destroy(gameObject);
+    }
+    
+    private void ReleaseToPool()
+    {
+        if (BulletPoolManager.Instance != null)
+            BulletPoolManager.Instance.BossSpecialBulletPool.Release(this);
+        else
+            Destroy(gameObject);
     }
 
     #endregion
