@@ -16,7 +16,16 @@ public class Enemy : MonoBehaviour
     
     [SerializeField]
     public int scoreValue;
+    
+    protected IScoreWriter scoreWriter;
         
+    protected virtual void Awake()
+    {
+        if (EndGameManager.endGameManager != null)
+        {
+            scoreWriter = EndGameManager.Score;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +55,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void DeathSequence()
     {
-        EndGameManager.endGameManager.UpdateScoreText(scoreValue);
+        scoreWriter?.AddScore(scoreValue);
     }
 }

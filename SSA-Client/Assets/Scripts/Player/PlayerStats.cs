@@ -20,12 +20,22 @@ public class PlayerStats : MonoBehaviour
     private bool canPlayAnim = true;
     private PlayerShooting _playerShooting;
     
+    private IGameResolver gameResolver;
+    
      void Start()
     {
         health = maxHealth;
         healthBar.fillAmount = health / maxHealth;
-        EndGameManager.endGameManager.isGameOver = false;
         _playerShooting = GetComponent<PlayerShooting>();
+        
+        if (EndGameManager.endGameManager != null)
+        {
+            gameResolver = EndGameManager.Resolver;
+            if (gameResolver is GameSessionService gs)
+            {
+                gs.ResetGameState();
+            }
+        }
     }
      
     public void PlayerTakeDamage(float damage)
@@ -43,8 +53,14 @@ public class PlayerStats : MonoBehaviour
         _playerShooting.DecreaseUpgradelevel();
         if (health <= 0)
         {
-            EndGameManager.endGameManager.isGameOver = true;
-            EndGameManager.endGameManager.StartResolveSequence();
+            if (gameResolver is GameSessionService gs)
+            {
+                gs.TriggerLose();
+            }
+            else
+            {
+                gameResolver?.StartResolveSequence(2f);
+            }
             Instantiate(explosionVFX,transform.position, transform.rotation);
             Destroy(gameObject);
         }

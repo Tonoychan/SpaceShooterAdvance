@@ -13,8 +13,7 @@ public class ButtonIcons : MonoBehaviour
 
     private void Awake()
     {
-        var unlockedLevel = PlayerPrefs.GetInt
-            (EndGameManager.endGameManager.lvlUnlock, firstLevelBuildIndex);
+        var unlockedLevel = PlayerPrefs.GetInt("LevelUnlock", firstLevelBuildIndex);
         for (var i = 0; i < levelButtons.Length; i++)
         {
             if (i + firstLevelBuildIndex <= unlockedLevel)
