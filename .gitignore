@@ -109,3 +109,5 @@ SSS-Client/obj/
 SSS-Client/.ai/
 /SSA-Client/Library
 *.cache
+
+SSA-Client/Temp/

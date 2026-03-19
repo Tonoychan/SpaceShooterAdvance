@@ -548,7 +548,7 @@ MonoBehaviour:
     m_DynamicPanelBehavior: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 54976
+  m_LastSelectedObjectID: 0
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43
+    y: 0
     width: 1920
     height: 36
   m_SerializedDataModeController:
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 704
     height: 479
   m_SerializedDataModeController:
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 584
+    y: 529
     width: 935
     height: 402
   m_SerializedDataModeController:
@@ -1599,8 +1599,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 936
-    y: 79
+    x: 1
+    y: 24
     width: 427
     height: 486
   m_SerializedDataModeController:
@@ -1619,10 +1619,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: -173300
+      m_SelectedIDs: []
       m_LastClickedID:
-        m_Data: -173300
+        m_Data: 0
       m_ExpandedIDs:
       - m_Data: -173262
       - m_Data: -169274
@@ -1700,8 +1699,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 936
-    y: 591
+    x: 1
+    y: 536
     width: 427
     height: 395
   m_SerializedDataModeController:
@@ -1750,23 +1749,27 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 51372
-    - m_Data: 51376
-    - m_Data: 51746
-    - m_Data: 51748
-    - m_Data: 51750
-    - m_Data: 51752
-    - m_Data: 51754
-    - m_Data: 51756
-    - m_Data: 51758
-    - m_Data: 51760
-    - m_Data: 51762
-    - m_Data: 51764
-    - m_Data: 51766
-    - m_Data: 51768
-    - m_Data: 51770
-    - m_Data: 51772
-    - m_Data: 51774
+    - m_Data: 51510
+    - m_Data: 51682
+    - m_Data: 52046
+    - m_Data: 52048
+    - m_Data: 52396
+    - m_Data: 52398
+    - m_Data: 52400
+    - m_Data: 52402
+    - m_Data: 52404
+    - m_Data: 52406
+    - m_Data: 52408
+    - m_Data: 52410
+    - m_Data: 52412
+    - m_Data: 52414
+    - m_Data: 52416
+    - m_Data: 52418
+    - m_Data: 52420
+    - m_Data: 52422
+    - m_Data: 52424
+    - m_Data: 52426
+    - m_Data: 52428
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1800,31 +1803,31 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 51120
-    - m_Data: 51372
-    - m_Data: 51436
-    - m_Data: 51746
-    - m_Data: 51748
-    - m_Data: 51750
-    - m_Data: 51752
-    - m_Data: 51756
-    - m_Data: 51758
-    - m_Data: 51766
-    - m_Data: 51768
-    - m_Data: 51772
-    - m_Data: 51774
-    - m_Data: 51974
-    - m_Data: 61260
-    - m_Data: 61448
-    - m_Data: 67846
-    - m_Data: 68242
-    - m_Data: 70224
-    - m_Data: 73758
-    - m_Data: 73766
+    - m_Data: 51510
+    - m_Data: 51682
+    - m_Data: 52046
+    - m_Data: 52048
+    - m_Data: 52396
+    - m_Data: 52398
+    - m_Data: 52400
+    - m_Data: 52402
+    - m_Data: 52404
+    - m_Data: 52406
+    - m_Data: 52408
+    - m_Data: 52410
+    - m_Data: 52412
+    - m_Data: 52414
+    - m_Data: 52416
+    - m_Data: 52418
+    - m_Data: 52420
+    - m_Data: 52422
+    - m_Data: 52424
+    - m_Data: 52426
+    - m_Data: 52428
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: PowerUpShield
-      m_OriginalName: PowerUpShield
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
@@ -1832,10 +1835,10 @@ MonoBehaviour:
         width: 0
         height: 0
       m_UserData:
-        m_Data: 55052
+        m_Data: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 4}
@@ -1902,8 +1905,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1365
-    y: 79
+    x: 1366
+    y: 24
     width: 554
     height: 907
   m_SerializedDataModeController:
@@ -1953,8 +1956,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Simulator\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 705
-    y: 79
+    x: 706
+    y: 24
     width: 229
     height: 479
   m_SerializedDataModeController:
@@ -1986,7 +1989,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_SimulatorState:
     controlPanelVisible: 0
-    controlPanelWidth: 0
+    controlPanelWidth: NaN
     controlPanelFoldoutKeys:
     - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceUIExtension
     - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
@@ -1999,7 +2002,7 @@ MonoBehaviour:
     - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
     - '{}'
     - '{}'
-    scale: 15
+    scale: 10
     fitToScreenEnabled: 1
     rotationDegree: 0
     highlightSafeAreaEnabled: 0
