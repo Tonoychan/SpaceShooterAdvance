@@ -5,10 +5,15 @@ public class PanelController : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
+    
+    [SerializeField] private GameSessionService gameSessionService;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        EndGameManager.endGameManager.RegisterPanelController(this);
+        if (gameSessionService != null)
+        {
+            gameSessionService.SetPanelController(this);
+        }
     }
 
     public void ActivateWinScreen()

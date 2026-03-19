@@ -1997,6 +1997,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1384867850}
+    - target: {fileID: 2061042903716629674, guid: 6b450c254cbbcc04ebf400e199911294, type: 3}
+      propertyPath: gameSessionService
+      value: 
+      objectReference: {fileID: 4807111128534409246}
+    - target: {fileID: 3900272947454157748, guid: 6b450c254cbbcc04ebf400e199911294, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 37.19995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900272947454157748, guid: 6b450c254cbbcc04ebf400e199911294, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160.80005
+      objectReference: {fileID: 0}
     - target: {fileID: 7309198769609379816, guid: 6b450c254cbbcc04ebf400e199911294, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2157,11 +2169,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4363100540305044007, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
+      propertyPath: gameSessionService
+      value: 
+      objectReference: {fileID: 4807111128534409246}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1556710234311450474, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4807111128534409246}
   m_SourcePrefab: {fileID: 100100000, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
+--- !u!1 &4807111128534409245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1556710234311450474, guid: 11707a4e5641fe04a971b051557a644f, type: 3}
+  m_PrefabInstance: {fileID: 4807111128534409244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4807111128534409246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807111128534409245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8eee6e8f004c548a3451490a7a1d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameSessionService
 --- !u!1001 &5165834300023694932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2340,6 +2376,10 @@ PrefabInstance:
       propertyPath: canvasGroup
       value: 
       objectReference: {fileID: 1683841286}
+    - target: {fileID: 8503730399755121264, guid: c060253fde09cdb4dac5163f40e3f3f0, type: 3}
+      propertyPath: gameSessionService
+      value: 
+      objectReference: {fileID: 4807111128534409246}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

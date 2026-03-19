@@ -10,6 +10,18 @@ public class WinCondition : MonoBehaviour
     [SerializeField] private bool hasBoss = false;
     public bool canSpawnBoss = false;
     
+    private IGameStatusReader gameStatus;
+    private IGameResolver gameResolver;
+    
+    private void Awake()
+    {
+        if (EndGameManager.endGameManager != null)
+        {
+            gameStatus = EndGameManager.Status;
+            gameResolver = EndGameManager.Resolver;
+        }
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +31,7 @@ public class WinCondition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(EndGameManager.endGameManager.isGameOver)
+        if (gameStatus != null && gameStatus.IsGameOver)
             return;
         
         timer += Time.deltaTime;
@@ -27,7 +39,7 @@ public class WinCondition : MonoBehaviour
         {
             if (hasBoss == false)
             {
-                EndGameManager.endGameManager.StartResolveSequence();
+                gameResolver?.ResolveGame();
             }
             else
             {
