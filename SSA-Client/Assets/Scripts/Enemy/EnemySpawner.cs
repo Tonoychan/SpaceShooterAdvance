@@ -60,6 +60,15 @@ public class EnemySpawner : MonoBehaviour
     }
 
     #endregion
+    
+    #region Public Methods
+    
+    public void SetSpawnTime(float time)
+    {
+        spawnTime = time;
+    }
+    
+    #endregion
 
     #region Private Methods
 
@@ -78,6 +87,7 @@ public class EnemySpawner : MonoBehaviour
             enemySpawnTimer = 0;
         }
     }
+    
 
     /// <summary>
     /// Calculates spawn boundaries from camera viewport. Delayed to ensure camera is ready.

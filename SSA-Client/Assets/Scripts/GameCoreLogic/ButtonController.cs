@@ -17,14 +17,13 @@ public class ButtonController : MonoBehaviour
     {
         FadeCanvas.fadeCanvas.FaderLoadString(sceneName);
     }
-
+    
     /// <summary>
-    /// Loads a level by build index. No fade transition.
+    /// Loads a level by LevelData with fade transition.
     /// </summary>
-    /// <param name="sceneIndex">Build index of the scene.</param>
-    public void LoadLevelInt(int sceneIndex)
+    public void LoadLevel(LevelData levelData)
     {
-        SceneManager.LoadScene(sceneIndex);
+        FadeCanvas.fadeCanvas.FaderLoadLevel(levelData);
     }
 
     /// <summary>
@@ -32,7 +31,9 @@ public class ButtonController : MonoBehaviour
     /// </summary>
     public void RestartLevel()
     {
-        FadeCanvas.fadeCanvas.FaderLoadString(SceneManager.GetActiveScene().name);
+        // CHANGE: FaderLoadString(SceneManager.GetActiveScene().name)
+        // TO: FaderLoadLevel(FadeCanvas.fadeCanvas.CurrentLevelData)
+        FadeCanvas.fadeCanvas.FaderLoadLevel(FadeCanvas.CurrentLevelData);
     }
 
     #endregion

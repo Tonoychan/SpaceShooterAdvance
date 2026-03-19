@@ -13,19 +13,22 @@ public class ButtonIcons : MonoBehaviour
     [SerializeField] private Button[] levelButtons;
     [SerializeField] private Sprite unlockedIcon;
     [SerializeField] private Sprite lockedIcon;
-    [SerializeField] private int firstLevelBuildIndex;
-
+    [SerializeField] private LevelData[] levelDataArray;
     #endregion
 
     #region Unity Lifecycle
 
     private void Awake()
     {
-        var unlockedLevel = PlayerPrefs.GetInt("LevelUnlock", firstLevelBuildIndex);
+        if (levelButtons == null || levelDataArray == null || levelDataArray.Length == 0)
+            return;
 
-        for (var i = 0; i < levelButtons.Length; i++)
+        var unlockedLevel = PlayerPrefs.GetInt("LevelUnlock", 0);
+        var count = Mathf.Min(levelButtons.Length, levelDataArray.Length);
+
+        for (var i = 0; i < count; i++)
         {
-            if (i + firstLevelBuildIndex <= unlockedLevel)
+            if (levelDataArray[i].levelIndex <= unlockedLevel)
             {
                 levelButtons[i].interactable = true;
                 levelButtons[i].image.sprite = unlockedIcon;

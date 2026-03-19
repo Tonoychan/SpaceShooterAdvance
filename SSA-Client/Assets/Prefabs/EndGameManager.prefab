@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2760487914751796212}
   - component: {fileID: 4363100540305044007}
   - component: {fileID: 974568906719046428}
+  - component: {fileID: 1783109614360297753}
   m_Layer: 0
   m_Name: EndGameManager
   m_TagString: Untagged
@@ -58,3 +59,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8eee6e8f004c548a3451490a7a1d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSessionService
+--- !u!114 &1783109614360297753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556710234311450474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858040043991d2c46bbec89fc3719e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelInitializer

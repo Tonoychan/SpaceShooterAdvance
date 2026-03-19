@@ -92,7 +92,7 @@ public class GameSessionService : MonoBehaviour, IGameStatusReader, IGameResolve
         if (IsGameOver) return;
         SaveAndResetScore();
         panelController?.ActivateWinScreen();
-        int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        int nextLevel = FadeCanvas.CurrentLevelData.levelIndex + 1;
         int currentUnlock = PlayerPrefs.GetInt(LevelUnlockKey, 0);
         if (nextLevel > currentUnlock)
         {
@@ -172,7 +172,7 @@ public class GameSessionService : MonoBehaviour, IGameStatusReader, IGameResolve
     /// </summary>
     private void SaveAndResetScore()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
+        string sceneName = FadeCanvas.CurrentLevelData?.levelId ?? "Unknown";
         PlayerPrefs.SetInt("Score" + sceneName, CurrentScore);
         int highScore = PlayerPrefs.GetInt("HighScore" + sceneName, 0);
         if (CurrentScore > highScore)

@@ -740,11 +740,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 229348286}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: LoadLevelString
-        m_Mode: 5
+        m_MethodName: LoadLevel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 60ef365b5ea72334fbb547fc099d3757, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Level1
@@ -5494,11 +5494,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 229348286}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: LoadLevelString
-        m_Mode: 5
+        m_MethodName: LoadLevel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 6c6af061a15b6f443a8158c13e1890c1, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Level1
@@ -7655,7 +7655,12 @@ MonoBehaviour:
   - {fileID: 662855178}
   unlockedIcon: {fileID: 21300000, guid: 01624fa2b87b2f74290c007254f05997, type: 3}
   lockedIcon: {fileID: 848750561701420153, guid: b4c871d8e9a11ce48ab17ad982913324, type: 3}
-  firstLevelBuildIndex: 2
+  levelDataArray:
+  - {fileID: 11400000, guid: 95a958e3e06b0e249aa58b964eeb3460, type: 2}
+  - {fileID: 11400000, guid: cd6004cbfe4e08b499a6a8c0e687185c, type: 2}
+  - {fileID: 11400000, guid: 8952ee4676641cf47818e019ad4c1a9c, type: 2}
+  - {fileID: 11400000, guid: 6c6af061a15b6f443a8158c13e1890c1, type: 2}
+  - {fileID: 11400000, guid: 60ef365b5ea72334fbb547fc099d3757, type: 2}
 --- !u!1 &823716554
 GameObject:
   m_ObjectHideFlags: 0
@@ -10985,7 +10990,7 @@ Transform:
   m_GameObject: {fileID: 1332470248}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 642, y: 1389, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12803,11 +12808,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 229348286}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: LoadLevelString
-        m_Mode: 5
+        m_MethodName: LoadLevel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 8952ee4676641cf47818e019ad4c1a9c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Level1
@@ -12936,11 +12941,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 229348286}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: LoadLevelString
-        m_Mode: 5
+        m_MethodName: LoadLevel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: cd6004cbfe4e08b499a6a8c0e687185c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Level2
@@ -14099,11 +14104,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 229348286}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: LoadLevelString
-        m_Mode: 5
+        m_MethodName: LoadLevel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 95a958e3e06b0e249aa58b964eeb3460, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Level1
