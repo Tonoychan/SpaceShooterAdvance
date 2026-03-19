@@ -11,6 +11,8 @@ public class FadeCanvas : MonoBehaviour
     #region Static Fields
 
     public static FadeCanvas fadeCanvas;
+    public static LevelData CurrentLevelData { get; private set; }
+    private const string GameplaySceneName = "GameplayScene";
 
     #endregion
 
@@ -55,6 +57,12 @@ public class FadeCanvas : MonoBehaviour
     {
         StartCoroutine(FadeOut(levelName));
     }
+    
+    public void FaderLoadLevel(LevelData levelData)
+    {
+        CurrentLevelData = levelData;
+        StartCoroutine(FadeOut(levelData));
+    }
 
     #endregion
 
@@ -85,6 +93,21 @@ public class FadeCanvas : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
         SceneManager.LoadScene(levelName);
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(FadeIn());
+    }
+    
+    private IEnumerator FadeOut(LevelData levelData)
+    {
+        if (fadeStarted)
+            yield break;
+        fadeStarted = true;
+        while (canvasGroup.alpha < 1)
+        {
+            canvasGroup.alpha += changeValue;
+            yield return new WaitForSeconds(waitTime);
+        }
+        SceneManager.LoadScene(GameplaySceneName);
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(FadeIn());
     }

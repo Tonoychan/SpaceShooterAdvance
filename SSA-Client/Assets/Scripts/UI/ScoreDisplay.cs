@@ -19,10 +19,10 @@ public class ScoreDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        var score = PlayerPrefs.GetInt("Score" + SceneManager.GetActiveScene().name, 0);
+        var score = PlayerPrefs.GetInt("Score" + (FadeCanvas.CurrentLevelData?.levelId ?? "Unknown"), 0);
         scoreText.text = $"Score: {score}";
 
-        var highScore = PlayerPrefs.GetInt("HighScore" + SceneManager.GetActiveScene().name, 0);
+        var highScore = PlayerPrefs.GetInt("HighScore" + (FadeCanvas.CurrentLevelData?.levelId ?? "Unknown"), 0);
         highScoreText.text = $"High Score: {highScore}";
     }
 

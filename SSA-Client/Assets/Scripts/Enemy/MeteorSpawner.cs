@@ -51,6 +51,14 @@ public class MeteorSpawner : MonoBehaviour
 
     #endregion
 
+    #region Public Methods
+
+    public void SetSpawnTime(float time)
+    {
+        spawnTime = time;
+    }
+    #endregion
+    
     #region Private Methods
 
     /// <summary>
