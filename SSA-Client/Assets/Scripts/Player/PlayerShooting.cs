@@ -93,7 +93,9 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
-        if (BulletPoolManager.Instance == null) return;
+        if (BulletPoolManager.Instance == null) 
+            return;
+        
         audioSource.Play();
         var pool = BulletPoolManager.Instance.LaserPool;
         switch (shootUpgradeLevel)
