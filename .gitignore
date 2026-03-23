@@ -111,3 +111,5 @@ SSS-Client/.ai/
 *.cache
 
 SSA-Client/Temp/
+/SSA-Client/Builds
+SSA-Client/Assets/Builds.meta
